@@ -1,0 +1,2 @@
+eval "$( shellenv)"
+brew install qemu nasm
