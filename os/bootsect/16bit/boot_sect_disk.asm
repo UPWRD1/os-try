@@ -23,6 +23,7 @@ disk_load:
     pop dx
     cmp al, dh
     jne sectors_error
+
     popa
     ret
 
@@ -36,7 +37,7 @@ disk_error:
     jmp disk_loop
 
 sectors_error:
-    mov bx, sectors_error
+    mov bx, SECTORS_ERROR
     call print
 
 disk_loop:

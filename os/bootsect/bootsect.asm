@@ -26,7 +26,6 @@ load_kernel:
     mov bx, MSG_LOAD_KERNEL
     call print
     call print_nl
-
     mov bx, KERNAL_OFFSET ; Read from disk and store in 0x1000
     mov dh, 2
     mov dl, [BOOT_DRIVE]
@@ -42,9 +41,11 @@ BEGIN_PM: ; after switch
 
 
 BOOT_DRIVE db 0 ; Store it just in case dl gets overwritten
-MSG_REAL_MODE db "[INFO] Initializing 16-bit real mode", 0
-MSG_PROT_MODE db "[INFO] Loaded 32-bit protected mode", 0
-MSG_LOAD_KERNEL db "[INFO] Initializing kernel", 0
+MSG_REAL_MODE db "[INFO] Initializing 16-bit real mode ", 0
+MSG_ENTER_PROT db "[INFO] Entering 32-bit protected mode ", 0
+MSG_PROT_MODE db "[INFO] Loaded 32-bit protected mode ", 0
+MSG_LOAD_KERNEL db "[INFO] Initializing kernel ", 0
+
 
 ; padding and magic number (!)
 times 510-($-$$) db 0
